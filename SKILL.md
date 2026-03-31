@@ -448,11 +448,14 @@ python3 {skill_dir}/toolkit/cli.py preview {markdown} --theme {theme} --no-open 
   stats: null
 ```
 
-**8.2 回复用户**：
+**8.2 编辑建议**：
+
+如果用户想让 WeWrite 学习自己的修改风格，需要在 WeWrite 输出的 markdown 文件（`output/` 目录）中直接修改，然后说"学习我的修改"。微信草稿箱内的修改无法同步回 WeWrite，因此建议用户：先在本地 markdown 改完 → 说"学习我的修改" → 再重新推送。
+
+**8.3 回复用户**：
 
 - 最终标题 + 2 备选 + 摘要 + 5 标签 + media_id
-- 编辑建议："文章有 2-3 个编辑锚点，建议花 3-5 分钟加入你自己的话，效果更好。"
-- 飞轮提示："编辑完成后说**'学习我的修改'**，下次初稿会更接近你的风格。"
+- 编辑建议："文章有 2-3 个编辑锚点，建议在 `output/` 目录的 markdown 文件里加入你自己的话，改完后说**'学习我的修改'**再重新推送，效果更好。"
 
 **8.3 后续操作**：
 
@@ -465,7 +468,7 @@ python3 {skill_dir}/toolkit/cli.py preview {markdown} --theme {theme} --no-open 
 | 看看有什么主题 | `python3 {skill_dir}/toolkit/cli.py gallery` |
 | 换成 XX 主题 | 重新渲染 |
 | 看看文章数据 | `读取: {skill_dir}/references/effect-review.md` |
-| 学习我的修改 | `读取: {skill_dir}/references/learn-edits.md` |
+| 学习我的修改 | `读取: {skill_dir}/references/learn-edits.md`。需要在 `output/` 目录的 markdown 文件中修改，不支持微信草稿箱内的修改同步学习 |
 | 做一个小绿书/图片帖 | `python3 {skill_dir}/toolkit/cli.py image-post img1.jpg img2.jpg -t "标题"` |
 | 检查一下 / 自检 / 这篇文章怎么样 | 生成报告（生成档案 + 质量检查，见辅助功能） |
 | 导入范文 / 建范文库 | `python3 {skill_dir}/scripts/extract_exemplar.py article.md` |
