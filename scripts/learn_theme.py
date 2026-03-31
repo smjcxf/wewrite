@@ -290,6 +290,7 @@ def analyze_styles(grouped: dict) -> dict:
     # --- primary (accent color) ------------------------------------------------
     # Collect non-gray colors from strong/section/h1-h3/span; boost colors from
     # elements whose font-size is ≥ 20 px (weight × 5).
+    # Exclude the dominant text color so near-black body text never wins.
     accent_tags = {"strong", "section", "h1", "h2", "h3", "span"}
     accent_counter: Counter = Counter()
     for tag in accent_tags:
@@ -299,6 +300,8 @@ def analyze_styles(grouped: dict) -> dict:
                 continue
             hex_c = rgb_to_hex(color_val)
             if is_gray(hex_c):
+                continue
+            if hex_c == result["text"]:
                 continue
             # Check font-size for boost
             fs = d.get("font-size")
